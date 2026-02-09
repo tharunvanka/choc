@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For Pranathi ❤️</title>
 
+  <!-- Romantic cursive font -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
   <style>
     * { box-sizing: border-box; }
 
@@ -18,64 +21,61 @@
       overflow: hidden;
 
       background:
-        linear-gradient(rgba(25, 6, 6, 0.82), rgba(25, 6, 6, 0.9)),
-        url("https://images.unsplash.com/photo-1518199266791-5375a83190b7");
+        linear-gradient(rgba(22, 6, 6, 0.85), rgba(22, 6, 6, 0.92)),
+        url("https://images.unsplash.com/photo-1506744038136-46273834b3fb");
       background-size: cover;
       background-position: center;
     }
 
     .card {
       width: 90%;
-      max-width: 380px;
-      padding: 30px 24px;
+      max-width: 390px;
+      padding: 32px 26px;
       text-align: center;
       color: #fff;
 
       background: rgba(0,0,0,0.45);
       backdrop-filter: blur(10px);
-      border-radius: 22px;
-      box-shadow: 0 25px 45px rgba(0,0,0,0.6);
+      border-radius: 24px;
+      box-shadow: 0 30px 50px rgba(0,0,0,0.65);
 
       animation: fadeIn 2s ease;
       z-index: 2;
     }
 
     .name {
-      font-size: 20px;
-      margin-bottom: 12px;
-      color: #ffb3b3;
-      min-height: 26px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 34px;
+      color: #ffd6d6;
+      margin-bottom: 10px;
+      min-height: 40px;
     }
 
     .icons {
-      font-size: 36px;
-      margin-bottom: 12px;
+      font-size: 38px;
+      margin-bottom: 14px;
       animation: pulse 1.6s infinite;
     }
 
     h1 {
       font-size: 17px;
-      line-height: 1.7;
+      line-height: 1.75;
       font-weight: 400;
     }
 
-    b {
-      color: #ffb3b3;
-      font-weight: 600;
-    }
-
     .tap {
-      margin-top: 14px;
+      margin-top: 16px;
       font-size: 13px;
-      opacity: 0.7;
+      opacity: 0.75;
     }
 
     .hidden {
       display: none;
-      margin-top: 16px;
-      font-size: 15px;
-      color: #ffdada;
-      animation: fadeIn 1.5s ease;
+      margin-top: 18px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #ffdede;
+      animation: fadeIn 1.8s ease;
     }
 
     .heart {
@@ -114,54 +114,53 @@
   <span class="heart" style="left:70%; animation-delay:1s;">🤎</span>
   <span class="heart" style="left:90%; animation-delay:3s;">❤️</span>
 
-  <div class="card" onclick="revealMessage(); playMusic();">
+  <div class="card" onclick="reveal(); playMusic();">
     <div class="name" id="name"></div>
 
     <div class="icons">🍫❤️</div>
 
     <h1>
       I don’t need chocolate to crave sweetness.<br><br>
-      I crave <b>you</b> — your touch, your love, your presence.<br><br>
-      Happy Chocolate Day, baby 🤎
+      I crave <b>you</b> — your touch, your love, your presence.
     </h1>
 
     <div class="tap">tap anywhere 💌</div>
 
     <div class="hidden" id="secret">
-      Pranathi, you’re not just someone I love…  
-      you’re where my heart feels safe.  
-      Always. ❤️
+      I want you…<br>
+      I’m craving for you — every moment, every heartbeat.<br><br>
+      You’re my chocolate, Pranathi —  
+      rich, addictive, and the only sweetness I need 🤎🍫<br><br>
+      <b>Happy Chocolate Day, my love ❤️</b>
     </div>
   </div>
 
-  <!-- background music -->
+  <!-- Romantic music -->
   <audio id="music" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+    <source src="https://cdn.pixabay.com/audio/2022/10/30/audio_8d9c1e3b8c.mp3">
   </audio>
 
   <script>
-    /* typing effect */
-    const text = "Pranathi ❤️";
+    /* typing name */
+    const text = "Pranathi";
     let i = 0;
-    const nameEl = document.getElementById("name");
+    const el = document.getElementById("name");
 
     function typeName() {
       if (i < text.length) {
-        nameEl.innerHTML += text.charAt(i);
+        el.innerHTML += text.charAt(i);
         i++;
-        setTimeout(typeName, 120);
+        setTimeout(typeName, 140);
       }
     }
     typeName();
 
-    /* reveal hidden message + music */
-    function revealMessage() {
+    function reveal() {
       document.getElementById("secret").style.display = "block";
     }
 
     function playMusic() {
-      const music = document.getElementById("music");
-      music.play().catch(() => {});
+      document.getElementById("music").play().catch(() => {});
     }
   </script>
 
