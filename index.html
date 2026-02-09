@@ -2,49 +2,168 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Chocolate Day ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Pranathi ❤️</title>
+
   <style>
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #2b0a0a, #4b1c1c);
-      font-family: 'Segoe UI', sans-serif;
-      color: #fff;
-      text-align: center;
+      overflow: hidden;
+
+      background:
+        linear-gradient(rgba(25, 6, 6, 0.82), rgba(25, 6, 6, 0.9)),
+        url("https://images.unsplash.com/photo-1518199266791-5375a83190b7");
+      background-size: cover;
+      background-position: center;
     }
+
     .card {
-      background: rgba(0,0,0,0.4);
-      padding: 30px;
-      border-radius: 20px;
-      max-width: 400px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      width: 90%;
+      max-width: 380px;
+      padding: 30px 24px;
+      text-align: center;
+      color: #fff;
+
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(10px);
+      border-radius: 22px;
+      box-shadow: 0 25px 45px rgba(0,0,0,0.6);
+
+      animation: fadeIn 2s ease;
+      z-index: 2;
     }
+
+    .name {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #ffb3b3;
+      min-height: 26px;
+    }
+
+    .icons {
+      font-size: 36px;
+      margin-bottom: 12px;
+      animation: pulse 1.6s infinite;
+    }
+
     h1 {
-      font-size: 22px;
-      line-height: 1.4;
+      font-size: 17px;
+      line-height: 1.7;
+      font-weight: 400;
     }
+
+    b {
+      color: #ffb3b3;
+      font-weight: 600;
+    }
+
+    .tap {
+      margin-top: 14px;
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    .hidden {
+      display: none;
+      margin-top: 16px;
+      font-size: 15px;
+      color: #ffdada;
+      animation: fadeIn 1.5s ease;
+    }
+
     .heart {
-      font-size: 40px;
-      animation: pulse 1.5s infinite;
+      position: absolute;
+      bottom: -20px;
+      font-size: 18px;
+      opacity: 0.6;
+      animation: float 9s linear infinite;
     }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 0; }
+      20% { opacity: 0.6; }
+      100% { transform: translateY(-110vh); opacity: 0; }
+    }
+
     @keyframes pulse {
       0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+      50% { transform: scale(1.15); }
       100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
+
 <body>
-  <div class="card">
-    <div class="heart">🍫❤️</div>
+
+  <!-- floating hearts -->
+  <span class="heart" style="left:10%">❤️</span>
+  <span class="heart" style="left:30%; animation-delay:2s;">🤎</span>
+  <span class="heart" style="left:50%; animation-delay:4s;">❤️</span>
+  <span class="heart" style="left:70%; animation-delay:1s;">🤎</span>
+  <span class="heart" style="left:90%; animation-delay:3s;">❤️</span>
+
+  <div class="card" onclick="revealMessage(); playMusic();">
+    <div class="name" id="name"></div>
+
+    <div class="icons">🍫❤️</div>
+
     <h1>
       I don’t need chocolate to crave sweetness.<br><br>
       I crave <b>you</b> — your touch, your love, your presence.<br><br>
       Happy Chocolate Day, baby 🤎
     </h1>
+
+    <div class="tap">tap anywhere 💌</div>
+
+    <div class="hidden" id="secret">
+      Pranathi, you’re not just someone I love…  
+      you’re where my heart feels safe.  
+      Always. ❤️
+    </div>
   </div>
+
+  <!-- background music -->
+  <audio id="music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+  </audio>
+
+  <script>
+    /* typing effect */
+    const text = "Pranathi ❤️";
+    let i = 0;
+    const nameEl = document.getElementById("name");
+
+    function typeName() {
+      if (i < text.length) {
+        nameEl.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeName, 120);
+      }
+    }
+    typeName();
+
+    /* reveal hidden message + music */
+    function revealMessage() {
+      document.getElementById("secret").style.display = "block";
+    }
+
+    function playMusic() {
+      const music = document.getElementById("music");
+      music.play().catch(() => {});
+    }
+  </script>
+
 </body>
 </html>
